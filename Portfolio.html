@@ -1,623 +1,977 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sanoshan Anton Jeyakumar - Interactive Play & Mechatronics Engineer</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'lego-red': '#D50000',
-            'lego-yellow': '#FFD600',
-            'lego-blue': '#0066CC',
-            'lego-green': '#00A651'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanoshan Anton Jeyakumar - Interactive Play & Mechatronics Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'lego-red': '#D50000',
+                        'lego-yellow': '#FFD600',
+                        'lego-blue': '#0066CC',
+                        'lego-green': '#00A651'
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-  <style>
-    .lego-shadow { box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-    .project-card { transition: transform .3s ease, box-shadow .3s ease; }
-    .project-card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,0.15); }
-    .nav-link { transition: color .3s ease; }
-    .nav-link:hover { color: #0066CC; }
-    .hero-bg { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
-    /* Drag and drop visuals */
-    .dropzone {
-      border: 2px dashed #94a3b8; /* slate-400 */
-      border-radius: 1rem;
-      transition: background-color .2s ease, border-color .2s ease;
-    }
-    .dropzone.dragover {
-      background-color: #f1f5f9; /* slate-100 */
-      border-color: #0066CC; /* lego-blue */
-    }
-    .media-thumb { object-fit: cover; }
-  </style>
+    </script>
+    <style>
+        .lego-shadow {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #0066CC;
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        .dropzone {
+            border: 2px dashed #d1d5db;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        .dropzone.dragover {
+            border-color: #0066CC;
+            background-color: #f0f9ff;
+        }
+        .media-thumb {
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
-  <!-- Navigation -->
-  <nav class="bg-white shadow-md fixed w-full top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <div class="text-2xl font-bold text-lego-blue">SAJ</div>
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Home</a>
-          <a href="#about" class="nav-link text-gray-700 hover:text-lego-blue font-medium">About</a>
-          <a href="#projects" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Projects</a>
-          <a href="#contact" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Contact</a>
-        </div>
-        <button id="mobile-menu-btn" class="md:hidden text-gray-700" aria-label="Open menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-      <div id="mobile-menu" class="md:hidden hidden pb-4">
-        <a href="#home" class="block py-2 text-gray-700 hover:text-lego-blue">Home</a>
-        <a href="#about" class="block py-2 text-gray-700 hover:text-lego-blue">About</a>
-        <a href="#projects" class="block py-2 text-gray-700 hover:text-lego-blue">Projects</a>
-        <a href="#contact" class="block py-2 text-gray-700 hover:text-lego-blue">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero-bg pt-20 pb-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center justify-between">
-        <div class="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Designing Interactive 
-            <span class="text-lego-blue">Play Experiences</span>
-          </h1>
-          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-            Portfolio of <strong>Sanoshan Anton Jeyakumar</strong>, merging sensors, mechanics, and imagination.
-          </p>
-          <button onclick="scrollToSection('projects')" class="bg-lego-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-lg lego-shadow transition-all duration-300 transform hover:scale-105">
-            Explore My Projects
-          </button>
-        </div>
-        <div class="lg:w-1/2 flex justify-center">
-          <div class="bg-white rounded-3xl p-8 lego-shadow max-w-md">
-            <div class="text-center">
-              <div class="w-64 h-64 mx-auto mb-4 bg-gradient-to-br from-lego-blue to-lego-green rounded-2xl flex items-center justify-center">
-                <div class="text-white text-center">
-                  <div class="text-6xl mb-2">🤖</div>
-                  <div class="text-sm font-medium">Interactive Tech</div>
-                  <div class="flex justify-center mt-4 space-x-2">
-                    <div class="w-4 h-4 bg-lego-red rounded-full"></div>
-                    <div class="w-4 h-4 bg-lego-yellow rounded-full"></div>
-                    <div class="w-4 h-4 bg-lego-blue rounded-full"></div>
-                    <div class="w-4 h-4 bg-lego-green rounded-full"></div>
-                  </div>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-lego-blue">SAJ</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-lego-blue font-medium">About</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-lego-blue font-medium">Contact</a>
                 </div>
-              </div>
-              <p class="text-gray-600 text-sm">Playful Technology + LEGO Style Innovation</p>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-700" aria-label="Toggle mobile menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
-          </div>
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-lego-blue">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-lego-blue">About</a>
+                <a href="#projects" class="block py-2 text-gray-700 hover:text-lego-blue">Projects</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-lego-blue">Contact</a>
+            </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg pt-20 pb-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                        Designing Interactive 
+                        <span class="text-lego-blue">Play Experiences</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Portfolio of <strong>Sanoshan Anton Jeyakumar</strong> – merging sensors, mechanics, and imagination.
+                    </p>
+                    <button onclick="scrollToSection('projects')" class="bg-lego-red hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full text-lg lego-shadow transition-all duration-300 transform hover:scale-105">
+                        Explore My Projects
+                    </button>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="bg-white rounded-3xl p-8 lego-shadow max-w-md">
+                        <div class="text-center">
+                            <!-- Hero Image Placeholder -->
+                            <div class="w-64 h-64 mx-auto mb-4 bg-gradient-to-br from-lego-blue to-lego-green rounded-2xl flex items-center justify-center">
+                                <div class="text-white text-center">
+                                    <div class="text-6xl mb-2">🤖</div>
+                                    <div class="text-sm font-medium">Interactive Tech</div>
+                                    <div class="flex justify-center mt-4 space-x-2">
+                                        <div class="w-4 h-4 bg-lego-red rounded-full"></div>
+                                        <div class="w-4 h-4 bg-lego-yellow rounded-full"></div>
+                                        <div class="w-4 h-4 bg-lego-blue rounded-full"></div>
+                                        <div class="w-4 h-4 bg-lego-green rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm">Playful Technology + LEGO-Style Innovation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/3 mb-8 lg:mb-0 lg:mr-12">
+                    <!-- Profile Photo Placeholder -->
+                    <div class="w-64 h-64 mx-auto bg-gradient-to-br from-lego-yellow to-lego-green rounded-full flex items-center justify-center lego-shadow">
+                        <div class="text-white text-center">
+                            <div class="text-8xl mb-2">👨‍💻</div>
+                            <div class="text-sm font-medium">Sanoshan Anton</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/3">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Me</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                        Engineer and creative prototyper specialized in <strong class="text-lego-blue">interactive play systems</strong>, 
+                        <strong class="text-lego-red">mechatronics</strong>, and <strong class="text-lego-green">digital-physical integration</strong>. 
+                    </p>
+                    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                        Skilled in <strong>C/C++</strong>, <strong>Python</strong>, <strong>Unity</strong>, <strong>Arduino</strong>, 
+                        and <strong>STM32</strong> platforms. Passionate about creating engaging play experiences that connect 
+                        sensors, actuators, and imagination.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-lego-blue text-white px-4 py-2 rounded-full text-sm font-medium">C/C++</span>
+                        <span class="bg-lego-red text-white px-4 py-2 rounded-full text-sm font-medium">Python</span>
+                        <span class="bg-lego-yellow text-white px-4 py-2 rounded-full text-sm font-medium">Unity</span>
+                        <span class="bg-lego-green text-white px-4 py-2 rounded-full text-sm font-medium">Arduino</span>
+                        <span class="bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-medium">STM32</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Featured Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project1')">
+                    <div class="w-full h-48 bg-gradient-to-br from-lego-blue to-blue-600 rounded-xl mb-6 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-5xl mb-2">🤖</div>
+                            <div class="text-sm font-medium">Autonomous Robot</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Autonomous Mobile Robot – Interactive Exploration</h3>
+                    <p class="text-gray-600 leading-relaxed">A playful robot with sensors and obstacle avoidance, showing kids how technology adapts.</p>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project2')">
+                    <div class="w-full h-48 bg-gradient-to-br from-lego-red to-red-600 rounded-xl mb-6 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-5xl mb-2">💡</div>
+                            <div class="text-sm font-medium">LED Cube</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">RGB LED Cube – Visual Interactive Toy</h3>
+                    <p class="text-gray-600 leading-relaxed">A 3D LED cube with programmable animations, turning light into a storytelling tool.</p>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project3')">
+                    <div class="w-full h-48 bg-gradient-to-br from-lego-green to-green-600 rounded-xl mb-6 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-5xl mb-2">⏰</div>
+                            <div class="text-sm font-medium">Smart Clock</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Interactive Clock – Connected Play Prototype</h3>
+                    <p class="text-gray-600 leading-relaxed">An IoT-based clock with LEDs and sensors to make learning time fun and engaging.</p>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project4')">
+                    <div class="w-full h-48 bg-gradient-to-br from-lego-yellow to-yellow-500 rounded-xl mb-6 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <div class="text-5xl mb-2">📊</div>
+                            <div class="text-sm font-medium">Debug Tool</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sensor Fusion Debug Tool – Interactive Data Visualization</h3>
+                    <p class="text-gray-600 leading-relaxed">A Python tool that visualizes sensor inputs, turning complex data into intuitive play.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Let's Build the Future of Play Together</h2>
+            <p class="text-lg text-gray-600 mb-8">Ready to create something amazing? Let's connect and explore new possibilities.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="mailto:sanoshanantonjeyakumar57@gmail.com" class="bg-lego-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">
+                    📧 Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/sanoshan-anton-jeyakumar-871a24199" target="_blank" class="bg-lego-green hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">
+                    💼 LinkedIn
+                </a>
+                <a href="tel:+33758833417" class="bg-lego-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">
+                    📞 Call Me
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Sanoshan Anton Jeyakumar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
+                    <button onclick="closeProject()" class="text-gray-500 hover:text-gray-700 text-2xl" aria-label="Close modal">&times;</button>
+                </div>
+                <div id="modal-content"></div>
+                
+                <!-- Showcase Your Project Section -->
+                <div class="mt-8 p-6 bg-gradient-to-r from-lego-blue to-lego-green rounded-lg text-white">
+                    <h4 class="text-lg font-bold mb-4">🎯 Showcase This Project</h4>
+                    <div id="dropzone" class="dropzone p-6 text-center bg-white/10 backdrop-blur-sm rounded-lg border-2 border-dashed border-white/30">
+                        <div class="text-white">
+                            <svg class="mx-auto h-10 w-10 mb-3" stroke="currentColor" fill="none" viewBox="0 0 48 48">
+                                <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <p class="text-lg mb-2">Drop your project photos & videos here</p>
+                            <p class="text-sm text-white/80 mb-4">Add real images to replace placeholders • PNG, JPG, MP4 up to 50MB</p>
+                            <button id="file-picker-btn" class="bg-white text-lego-blue hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors font-medium">
+                                📁 Choose Your Media
+                            </button>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" accept="image/png,image/jpeg,video/mp4" multiple class="hidden">
+                    <div class="flex justify-between items-center mt-4 text-sm">
+                        <p class="text-white/90">💡 Your media will replace the placeholder content above</p>
+                        <button id="reset-showcase-btn" class="bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded transition-colors">
+                            🔄 Reset Showcase
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project Media Showcase -->
+                <div id="project-showcase" class="hidden mt-6">
+                    <h4 class="text-xl font-bold text-gray-900 mb-4">📸 Your Project Showcase</h4>
+                    <div id="showcase-gallery" class="space-y-6"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center">
-        <div class="lg:w-1/3 mb-8 lg:mb-0 lg:mr-12">
-          <div class="w-64 h-64 mx-auto bg-gradient-to-br from-lego-yellow to-lego-green rounded-full flex items-center justify-center lego-shadow">
-            <div class="text-white text-center">
-              <div class="text-8xl mb-2">👨‍💻</div>
-              <div class="text-sm font-medium">Sanoshan Anton</div>
-            </div>
-          </div>
-        </div>
-        <div class="lg:w-2/3">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">About Me</h2>
-          <p class="text-lg text-gray-700 leading-relaxed mb-6">
-            Engineer and creative prototyper specialized in <strong class="text-lego-blue">interactive play systems</strong>,
-            <strong class="text-lego-red">mechatronics</strong>, and <strong class="text-lego-green">digital physical integration</strong>.
-          </p>
-          <p class="text-lg text-gray-700 leading-relaxed mb-8">
-            Skilled in <strong>C/C++</strong>, <strong>Python</strong>, <strong>Unity</strong>, <strong>Arduino</strong>,
-            and <strong>STM32</strong>. Passionate about creating engaging play experiences that connect
-            sensors, actuators, and imagination.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <span class="bg-lego-blue text-white px-4 py-2 rounded-full text-sm font-medium">C/C++</span>
-            <span class="bg-lego-red text-white px-4 py-2 rounded-full text-sm font-medium">Python</span>
-            <span class="bg-lego-yellow text-white px-4 py-2 rounded-full text-sm font-medium">Unity</span>
-            <span class="bg-lego-green text-white px-4 py-2 rounded-full text-sm font-medium">Arduino</span>
-            <span class="bg-gray-600 text-white px-4 py-2 rounded-full text-sm font-medium">STM32</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">Featured Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project1')">
-          <div class="w-full h-48 bg-gradient-to-br from-lego-blue to-blue-600 rounded-xl mb-6 flex items-center justify-center">
-            <div class="text-white text-center">
-              <div class="text-5xl mb-2">🤖</div>
-              <div class="text-sm font-medium">Autonomous Robot</div>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Autonomous Mobile Robot, Interactive Exploration</h3>
-          <p class="text-gray-600 leading-relaxed">A playful robot with sensors and obstacle avoidance, showing kids how technology adapts.</p>
-        </div>
-
-        <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project2')">
-          <div class="w-full h-48 bg-gradient-to-br from-lego-red to-red-600 rounded-xl mb-6 flex items-center justify-center">
-            <div class="text-white text-center">
-              <div class="text-5xl mb-2">💡</div>
-              <div class="text-sm font-medium">LED Cube</div>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">RGB LED Cube, Visual Interactive Toy</h3>
-          <p class="text-gray-600 leading-relaxed">A 3D LED cube with programmable animations, turning light into a storytelling tool.</p>
-        </div>
-
-        <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project3')">
-          <div class="w-full h-48 bg-gradient-to-br from-lego-green to-green-600 rounded-xl mb-6 flex items-center justify-center">
-            <div class="text-white text-center">
-              <div class="text-5xl mb-2">⏰</div>
-              <div class="text-sm font-medium">Smart Clock</div>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Interactive Clock, Connected Play Prototype</h3>
-          <p class="text-gray-600 leading-relaxed">An IoT clock with LEDs and sensors to make learning time fun and engaging.</p>
-        </div>
-
-        <div class="project-card bg-white rounded-2xl p-6 lego-shadow cursor-pointer" onclick="openProject('project4')">
-          <div class="w-full h-48 bg-gradient-to-br from-lego-yellow to-yellow-500 rounded-xl mb-6 flex items-center justify-center">
-            <div class="text-white text-center">
-              <div class="text-5xl mb-2">📊</div>
-              <div class="text-sm font-medium">Debug Tool</div>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">Sensor Fusion Debug Tool, Interactive Data Visualization</h3>
-          <p class="text-gray-600 leading-relaxed">A Python tool that visualizes sensor inputs, turning complex data into intuitive play.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Let's Build the Future of Play Together</h2>
-      <p class="text-lg text-gray-600 mb-8">Ready to create something amazing? Let's connect and explore new possibilities.</p>
-      <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-        <a href="mailto:sanoshanantonjeyakumar57@gmail.com" class="bg-lego-blue hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">📧 Email Me</a>
-        <a href="https://www.linkedin.com/in/sanoshan-anton-jeyakumar-871a24199" target="_blank" class="bg-lego-green hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">💼 LinkedIn</a>
-        <a href="tel:+33758833417" class="bg-lego-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 lego-shadow">📞 Call Me</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p>&copy; 2025 Sanoshan Anton Jeyakumar. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Project Modal -->
-  <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-      <div class="p-6">
-        <div class="flex justify-between items-center mb-6">
-          <h3 id="modal-title" class="text-2xl font-bold text-gray-900"></h3>
-          <button onclick="closeProject()" class="text-gray-500 hover:text-gray-700 text-2xl" aria-label="Close modal">&times;</button>
-        </div>
-
-        <!-- Dynamic project content goes here -->
-        <div id="modal-content"></div>
-
-        <!-- Divider -->
-        <div class="h-px bg-gray-200 my-6"></div>
-
-        <!-- Drag and Drop Uploader -->
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <h4 class="text-xl font-bold text-gray-900">Add Your Media</h4>
-            <div class="flex items-center gap-2">
-              <button id="clear-media-btn" class="text-sm px-3 py-2 rounded-md border border-gray-300 hover:bg-gray-50">Clear added media</button>
-              <button id="file-picker-btn" class="text-sm px-3 py-2 rounded-md bg-lego-blue text-white hover:bg-blue-700">Choose files</button>
-            </div>
-          </div>
-
-          <div id="dropzone" class="dropzone p-6 text-center">
-            <p class="text-gray-700 font-medium">Drag and drop images or videos here</p>
-            <p class="text-gray-500 text-sm mt-1">PNG, JPG, JPEG, MP4. Up to 50 MB per file, previews only.</p>
-          </div>
-          <input id="file-input" type="file" accept="image/png,image/jpeg,video/mp4" multiple class="hidden" />
-
-          <!-- User media gallery -->
-          <div id="user-media-wrap" class="hidden">
-            <h5 class="text-lg font-semibold text-gray-900 mb-3">Your added media</h5>
-            <div id="user-media" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Mobile menu toggle
-    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    });
-
-    // Smooth scrolling
-    function scrollToSection(sectionId) {
-      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Navigation links smooth scroll + close menu
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.getElementById('mobile-menu').classList.add('hidden');
-      });
-    });
-
-    // ----- Project definitions (unchanged content) -----
-    const projects = {
-      project1: {
-        title: "Autonomous Mobile Robot – Interactive Exploration",
-        content: `
-          <div class="space-y-6">
-            <div class="mb-8">
-              <h4 class="text-xl font-bold text-gray-900 mb-4">Project Media</h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <img src="https://via.placeholder.com/400x300/0066CC/FFFFFF?text=Robot+Photo+1" alt="Autonomous robot front view" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-                <img src="https://via.placeholder.com/400x300/0066CC/FFFFFF?text=Robot+Photo+2" alt="Robot sensors and components" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-              </div>
-              <div class="mb-4">
-                <video controls class="w-full h-64 rounded-lg shadow-md" poster="https://via.placeholder.com/800x450/0066CC/FFFFFF?text=Robot+Demo+Video">
-                  <source src="" type="video/mp4">
-                </video>
-                <p class="text-sm text-gray-600 mt-2">Demo video showing autonomous navigation in action</p>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
-              <p class="text-gray-700 leading-relaxed">Create an engaging robot that demonstrates autonomous navigation while teaching children about sensors, decision making, and adaptive behavior.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Arduino</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Ultrasonic Sensors</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">C++</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Motor Controllers</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">IMU</span>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
-              <p class="text-gray-700 leading-relaxed">Obstacle detection algorithms, pathfinding logic, and an interface that shows the robot thinking via LEDs and sound.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
-              <p class="text-gray-700 leading-relaxed">Kids observe decisions and adaptation, which makes complex engineering concepts accessible and fun.</p>
-            </div>
-          </div>`
-      },
-      project2: {
-        title: "RGB LED Cube – Visual Interactive Toy",
-        content: `
-          <div class="space-y-6">
-            <div class="mb-8">
-              <h4 class="text-xl font-bold text-gray-900 mb-4">Project Media</h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <img src="https://via.placeholder.com/400x300/D50000/FFFFFF?text=LED+Cube+Photo+1" alt="RGB LED cube structure" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-                <img src="https://via.placeholder.com/400x300/D50000/FFFFFF?text=LED+Cube+Photo+2" alt="LED cube animation patterns" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-              </div>
-              <div class="mb-4">
-                <video controls class="w-full h-64 rounded-lg shadow-md" poster="https://via.placeholder.com/800x450/D50000/FFFFFF?text=LED+Animation+Video">
-                  <source src="" type="video/mp4">
-                </video>
-                <p class="text-sm text-gray-600 mt-2">LED cube displaying 3D animation patterns</p>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
-              <p class="text-gray-700 leading-relaxed">Turn light into an interactive storytelling medium with programmable 3D visuals.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">STM32</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">RGB LEDs</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">C++</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">PWM Control</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">3D Matrix</span>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
-              <p class="text-gray-700 leading-relaxed">8x8x8 matrix with custom PCB, animation algorithms for 3D effects, and a simple pattern editor.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
-              <p class="text-gray-700 leading-relaxed">Users learn coordinates and logic while creating mesmerizing light shows.</p>
-            </div>
-          </div>`
-      },
-      project3: {
-        title: "Smart Interactive Clock – Connected Play Prototype",
-        content: `
-          <div class="space-y-6">
-            <div class="mb-8">
-              <h4 class="text-xl font-bold text-gray-900 mb-4">Project Media</h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <img src="https://via.placeholder.com/400x300/00A651/FFFFFF?text=Smart+Clock+Photo+1" alt="Smart clock" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-                <img src="https://via.placeholder.com/400x300/00A651/FFFFFF?text=Smart+Clock+Photo+2" alt="Clock LED display" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-              </div>
-              <div class="mb-4">
-                <video controls class="w-full h-64 rounded-lg shadow-md" poster="https://via.placeholder.com/800x450/00A651/FFFFFF?text=Clock+Demo+Video">
-                  <source src="" type="video/mp4">
-                </video>
-                <p class="text-sm text-gray-600 mt-2">Interactive clock features and IoT connectivity</p>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
-              <p class="text-gray-700 leading-relaxed">Make time concepts engaging with IoT, visual feedback, and gamified routines.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">ESP32</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">WiFi/IoT</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">LED Strips</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Touch Sensors</span>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
-              <p class="text-gray-700 leading-relaxed">RTC + IoT, interactive LED patterns by time of day, touch games for learning.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
-              <p class="text-gray-700 leading-relaxed">Kids learn through color coding, interactive alarms, and connected routines.</p>
-            </div>
-          </div>`
-      },
-      project4: {
-        title: "Sensor Fusion Debug Tool – Interactive Data Visualization",
-        content: `
-          <div class="space-y-6">
-            <div class="mb-8">
-              <h4 class="text-xl font-bold text-gray-900 mb-4">Project Media</h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <img src="https://via.placeholder.com/400x300/FFD600/000000?text=Debug+Tool+Screenshot+1" alt="Debug UI" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-                <img src="https://via.placeholder.com/400x300/FFD600/000000?text=Debug+Tool+Screenshot+2" alt="Graphs" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'">
-              </div>
-              <div class="mb-4">
-                <video controls class="w-full h-64 rounded-lg shadow-md" poster="https://via.placeholder.com/800x450/FFD600/000000?text=Debug+Tool+Demo">
-                  <source src="" type="video/mp4">
-                </video>
-                <p class="text-sm text-gray-600 mt-2">Real time visualization and debugging</p>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
-              <p class="text-gray-700 leading-relaxed">Turn complex sensor data into intuitive and playful visuals.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Matplotlib</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Serial</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Realtime</span>
-                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">GUI</span>
-              </div>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
-              <p class="text-gray-700 leading-relaxed">Streaming interface, interactive 3D plots, filter controls for fusion analysis.</p>
-            </div>
-            <div>
-              <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
-              <p class="text-gray-700 leading-relaxed">Engineers and students understand interactions faster, debugging is more intuitive.</p>
-            </div>
-          </div>`
-      }
-    };
-
-    // ----- Modal logic + new drag and drop -----
-    const modal = document.getElementById('project-modal');
-    const titleEl = document.getElementById('modal-title');
-    const contentEl = document.getElementById('modal-content');
-
-    // Per project in-memory store of user-added media for this session
-    const userMediaStore = {
-      project1: [],
-      project2: [],
-      project3: [],
-      project4: []
-    };
-    let currentProjectId = null;
-
-    function openProject(projectId) {
-      currentProjectId = projectId;
-      titleEl.textContent = projects[projectId].title;
-      contentEl.innerHTML = projects[projectId].content;
-
-      // Prepare user media UI every time
-      renderUserMedia();
-
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeProject() {
-      modal.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) closeProject();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeProject();
-    });
-
-    // ---- Drag and Drop Handlers ----
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('file-input');
-    const filePickerBtn = document.getElementById('file-picker-btn');
-    const clearBtn = document.getElementById('clear-media-btn');
-    const userMediaWrap = document.getElementById('user-media-wrap');
-    const userMediaGrid = document.getElementById('user-media');
-
-    // Defensive: if modal not opened yet, these exist but are fine
-
-    function highlightDropzone(on) {
-      if (!dropzone) return;
-      dropzone.classList.toggle('dragover', on);
-    }
-
-    ['dragenter', 'dragover'].forEach(evt =>
-      dropzone.addEventListener(evt, e => {
-        e.preventDefault();
-        e.stopPropagation();
-        highlightDropzone(true);
-      })
-    );
-
-    ['dragleave', 'drop'].forEach(evt =>
-      dropzone.addEventListener(evt, e => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (evt === 'dragleave') highlightDropzone(false);
-      })
-    );
-
-    dropzone.addEventListener('drop', e => {
-      highlightDropzone(false);
-      const files = Array.from(e.dataTransfer.files || []);
-      handleFiles(files);
-    });
-
-    filePickerBtn.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', e => {
-      const files = Array.from(e.target.files || []);
-      handleFiles(files);
-      // reset input so same file can be chosen again if needed
-      fileInput.value = '';
-    });
-
-    clearBtn.addEventListener('click', () => {
-      if (!currentProjectId) return;
-      userMediaStore[currentProjectId].forEach(item => {
-        if (item.url && item.objectUrl) URL.revokeObjectURL(item.url);
-      });
-      userMediaStore[currentProjectId] = [];
-      renderUserMedia();
-    });
-
-    function handleFiles(files) {
-      if (!currentProjectId || !files.length) return;
-
-      const accepted = ['image/png', 'image/jpeg', 'video/mp4'];
-      const maxSize = 50 * 1024 * 1024; // 50 MB
-
-      files.forEach(file => {
-        if (!accepted.includes(file.type)) return;
-        if (file.size > maxSize) return;
-
-        const objectUrl = URL.createObjectURL(file);
-        const kind = file.type.startsWith('image/') ? 'image' : 'video';
-
-        userMediaStore[currentProjectId].push({
-          kind,
-          name: file.name,
-          url: objectUrl,
-          objectUrl: true, // mark so we can revoke later
-          size: file.size,
-          type: file.type
-        });
-      });
-
-      renderUserMedia();
-    }
-
-    function renderUserMedia() {
-      if (!currentProjectId) return;
-
-      const items = userMediaStore[currentProjectId];
-      if (!items || items.length === 0) {
-        userMediaWrap.classList.add('hidden');
-        userMediaGrid.innerHTML = '';
-        return;
-      }
-
-      userMediaWrap.classList.remove('hidden');
-      userMediaGrid.innerHTML = '';
-
-      items.forEach((item, idx) => {
-        const card = document.createElement('div');
-        card.className = 'relative bg-white rounded-xl shadow border border-gray-100 p-2';
-
-        // Remove button
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'absolute top-2 right-2 text-xs bg-red-50 text-red-600 px-2 py-1 rounded-md hover:bg-red-100';
-        removeBtn.textContent = 'Remove';
-        removeBtn.addEventListener('click', () => {
-          // Revoke object URL to free memory
-          if (item.url && item.objectUrl) URL.revokeObjectURL(item.url);
-          userMediaStore[currentProjectId].splice(idx, 1);
-          renderUserMedia();
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
 
-        let mediaEl;
-        if (item.kind === 'image') {
-          mediaEl = document.createElement('img');
-          mediaEl.src = item.url;
-          mediaEl.alt = item.name || 'Image';
-          mediaEl.className = 'media-thumb w-full h-48 rounded-lg';
-        } else {
-          mediaEl = document.createElement('video');
-          mediaEl.controls = true;
-          mediaEl.src = item.url;
-          mediaEl.className = 'w-full h-56 rounded-lg';
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
         }
 
-        const caption = document.createElement('p');
-        caption.className = 'mt-2 text-xs text-gray-600 truncate';
-        caption.textContent = item.name || (item.kind === 'image' ? 'Image' : 'Video');
+        // Navigation links smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
 
-        card.appendChild(removeBtn);
-        card.appendChild(mediaEl);
-        card.appendChild(caption);
-        userMediaGrid.appendChild(card);
-      });
-    }
-  </script>
+        // Media storage and management
+        const userMediaStore = {
+            project1: [],
+            project2: [],
+            project3: [],
+            project4: []
+        };
+        let currentProjectId = null;
 
-  <!-- Keep Canva/Cloudflare script if it was required by your export -->
-  <script>
-    (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'979fa67ce5f6790a',t:'MTc1NzAxMTU5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
-  </script>
-</body>
+        // Project data
+        const projects = {
+            project1: {
+                title: "Autonomous Mobile Robot – Interactive Exploration",
+                content: `
+                    <div class="space-y-6">
+                        <!-- Permanent Project Showcase -->
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">📸 Project Showcase</h4>
+                            
+                            <!-- Images Grid -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    📸 Project Images <span class="ml-2 text-sm text-gray-500">(3)</span>
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">🤖</div>
+                                                <div class="text-lg font-medium">Robot Assembly</div>
+                                                <div class="text-sm opacity-80 mt-2">Complete autonomous robot with sensors</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">robot_final_assembly.jpg</p>
+                                        </div>
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">⚙️</div>
+                                                <div class="text-lg font-medium">Circuit Board</div>
+                                                <div class="text-sm opacity-80 mt-2">Arduino & sensor integration</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">circuit_board_detail.jpg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Videos Section -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    🎥 Project Videos <span class="ml-2 text-sm text-gray-500">(1)</span>
+                                </h5>
+                                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                    <div class="w-full h-64 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+                                        <div class="text-white text-center">
+                                            <div class="text-6xl mb-3">▶️</div>
+                                            <div class="text-lg font-medium">Navigation Demo</div>
+                                            <div class="text-sm opacity-80 mt-2">Robot avoiding obstacles autonomously</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <p class="font-medium text-gray-900">robot_navigation_demo.mp4</p>
+                                        <p class="text-sm text-gray-500">12.3 MB • Demonstration video</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
+                            <p class="text-gray-700 leading-relaxed">Create an engaging robot that demonstrates autonomous navigation while teaching children about sensors, decision-making, and adaptive behavior in technology.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Arduino</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Ultrasonic Sensors</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">C++</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Motor Controllers</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">IMU</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
+                            <p class="text-gray-700 leading-relaxed">Developed obstacle detection algorithms, implemented pathfinding logic, and created an intuitive interface that shows the robot's "thinking" process through LED indicators and sounds.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
+                            <p class="text-gray-700 leading-relaxed">Children can observe how the robot makes decisions, learns from its environment, and adapts its behavior - making complex engineering concepts accessible and fun.</p>
+                        </div>
+                    </div>
+                `
+            },
+            project2: {
+                title: "RGB LED Cube – Visual Interactive Toy",
+                content: `
+                    <div class="space-y-6">
+                        <!-- Permanent Project Showcase -->
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">📸 Project Showcase</h4>
+                            
+                            <!-- Images Grid -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    📸 Project Images <span class="ml-2 text-sm text-gray-500">(3)</span>
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">💡</div>
+                                                <div class="text-lg font-medium">LED Cube Complete</div>
+                                                <div class="text-sm opacity-80 mt-2">8x8x8 RGB LED matrix in action</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">led_cube_complete.jpg</p>
+                                        </div>
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-orange-600 to-orange-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">🔧</div>
+                                                <div class="text-lg font-medium">PCB Design</div>
+                                                <div class="text-sm opacity-80 mt-2">Custom circuit board layout</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">pcb_design_detail.jpg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Videos Section -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    🎥 Project Videos <span class="ml-2 text-sm text-gray-500">(2)</span>
+                                </h5>
+                                <div class="space-y-4">
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                        <div class="w-full h-64 bg-gradient-to-br from-pink-600 to-pink-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">✨</div>
+                                                <div class="text-lg font-medium">Animation Patterns</div>
+                                                <div class="text-sm opacity-80 mt-2">Various 3D light animations</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <p class="font-medium text-gray-900">led_animations_demo.mp4</p>
+                                            <p class="text-sm text-gray-500">8.7 MB • Animation showcase</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                        <div class="w-full h-64 bg-gradient-to-br from-indigo-600 to-indigo-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">🎮</div>
+                                                <div class="text-lg font-medium">Interactive Control</div>
+                                                <div class="text-sm opacity-80 mt-2">Programming interface demo</div>
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <p class="font-medium text-gray-900">programming_interface.mp4</p>
+                                            <p class="text-sm text-gray-500">15.2 MB • Interface walkthrough</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
+                            <p class="text-gray-700 leading-relaxed">Transform light into an interactive storytelling medium, allowing users to create and experience 3D visual narratives through programmable LED animations.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">STM32</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">RGB LEDs</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">C++</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">PWM Control</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">3D Matrix</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
+                            <p class="text-gray-700 leading-relaxed">Designed a 8x8x8 LED matrix with custom PCB, developed animation algorithms for 3D effects, and created an intuitive programming interface for pattern creation.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
+                            <p class="text-gray-700 leading-relaxed">Users can create mesmerizing 3D light shows, learn about coordinate systems and programming logic, while experiencing the magic of turning code into beautiful visual art.</p>
+                        </div>
+                    </div>
+                `
+            },
+            project3: {
+                title: "Smart Interactive Clock – Connected Play Prototype",
+                content: `
+                    <div class="space-y-6">
+                        <!-- Permanent Project Showcase -->
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">📸 Project Showcase</h4>
+                            
+                            <!-- Images Grid -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    📸 Project Images <span class="ml-2 text-sm text-gray-500">(2)</span>
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">⏰</div>
+                                                <div class="text-lg font-medium">Smart Clock Display</div>
+                                                <div class="text-sm opacity-80 mt-2">Interactive time display with LEDs</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">smart_clock_display.jpg</p>
+                                        </div>
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-teal-600 to-teal-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">📱</div>
+                                                <div class="text-lg font-medium">IoT Interface</div>
+                                                <div class="text-sm opacity-80 mt-2">Mobile app connectivity</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">iot_mobile_interface.jpg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Videos Section -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    🎥 Project Videos <span class="ml-2 text-sm text-gray-500">(1)</span>
+                                </h5>
+                                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                    <div class="w-full h-64 bg-gradient-to-br from-cyan-600 to-cyan-800 flex items-center justify-center">
+                                        <div class="text-white text-center">
+                                            <div class="text-6xl mb-3">🎮</div>
+                                            <div class="text-lg font-medium">Interactive Features</div>
+                                            <div class="text-sm opacity-80 mt-2">Touch controls and time games</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <p class="font-medium text-gray-900">clock_interactive_demo.mp4</p>
+                                        <p class="text-sm text-gray-500">18.4 MB • Full feature demonstration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
+                            <p class="text-gray-700 leading-relaxed">Make learning time concepts engaging and interactive through IoT connectivity, visual feedback, and gamified time management for children.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">ESP32</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">WiFi/IoT</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">LED Strips</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Touch Sensors</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
+                            <p class="text-gray-700 leading-relaxed">Integrated real-time clock with IoT connectivity, developed interactive LED patterns for different times of day, and created touch-based games for time learning.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
+                            <p class="text-gray-700 leading-relaxed">Children learn time concepts through color-coded hours, interactive alarms, and connected features that make daily routines more engaging and educational.</p>
+                        </div>
+                    </div>
+                `
+            },
+            project4: {
+                title: "Sensor Fusion Debug Tool – Interactive Data Visualization",
+                content: `
+                    <div class="space-y-6">
+                        <!-- Permanent Project Showcase -->
+                        <div class="mb-8">
+                            <h4 class="text-xl font-bold text-gray-900 mb-4">📸 Project Showcase</h4>
+                            
+                            <!-- Images Grid -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    📸 Project Images <span class="ml-2 text-sm text-gray-500">(3)</span>
+                                </h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-yellow-600 to-yellow-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">📊</div>
+                                                <div class="text-lg font-medium">Main Interface</div>
+                                                <div class="text-sm opacity-80 mt-2">Real-time data visualization dashboard</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">debug_tool_interface.jpg</p>
+                                        </div>
+                                    </div>
+                                    <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="w-full h-64 bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center">
+                                            <div class="text-white text-center">
+                                                <div class="text-6xl mb-3">📈</div>
+                                                <div class="text-lg font-medium">3D Visualization</div>
+                                                <div class="text-sm opacity-80 mt-2">Interactive sensor data plots</div>
+                                            </div>
+                                        </div>
+                                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                            <p class="text-white font-medium text-sm">3d_sensor_visualization.jpg</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Videos Section -->
+                            <div class="mb-6">
+                                <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                                    🎥 Project Videos <span class="ml-2 text-sm text-gray-500">(1)</span>
+                                </h5>
+                                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                                    <div class="w-full h-64 bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center">
+                                        <div class="text-white text-center">
+                                            <div class="text-6xl mb-3">🔄</div>
+                                            <div class="text-lg font-medium">Real-time Demo</div>
+                                            <div class="text-sm opacity-80 mt-2">Live sensor data processing</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <p class="font-medium text-gray-900">sensor_fusion_realtime.mp4</p>
+                                        <p class="text-sm text-gray-500">22.1 MB • Complete workflow demonstration</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-blue mb-3">Goal / Play Concept</h4>
+                            <p class="text-gray-700 leading-relaxed">Transform complex sensor data into intuitive, playful visualizations that make debugging and understanding sensor behavior accessible and engaging.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-red mb-3">Tech Used</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Matplotlib</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Serial Communication</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Real-time Processing</span>
+                                <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">GUI Framework</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-green mb-3">Process</h4>
+                            <p class="text-gray-700 leading-relaxed">Built real-time data streaming interface, developed interactive 3D visualizations, and created intuitive controls for filtering and analyzing sensor fusion algorithms.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-lego-yellow mb-3">Outcome / Play Value</h4>
+                            <p class="text-gray-700 leading-relaxed">Engineers and students can visualize complex sensor interactions in real-time, making debugging more intuitive and learning sensor fusion concepts more engaging.</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openProject(projectId) {
+            currentProjectId = projectId;
+            const modal = document.getElementById('project-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            title.textContent = projects[projectId].title;
+            content.innerHTML = projects[projectId].content;
+            
+            // Render project showcase after static content
+            renderProjectShowcase();
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProject() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            currentProjectId = null;
+        }
+
+        // Drag and drop functionality
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+        const filePickerBtn = document.getElementById('file-picker-btn');
+        const clearMediaBtn = document.getElementById('clear-media-btn');
+
+        // Drag and drop events
+        dropzone.addEventListener('dragenter', handleDragEnter);
+        dropzone.addEventListener('dragover', handleDragOver);
+        dropzone.addEventListener('dragleave', handleDragLeave);
+        dropzone.addEventListener('drop', handleDrop);
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            if (!dropzone.contains(e.relatedTarget)) {
+                dropzone.classList.remove('dragover');
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files);
+            handleFiles(files);
+        }
+
+        // File picker button
+        filePickerBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            handleFiles(files);
+            // Reset input so same file can be selected again
+            e.target.value = '';
+        });
+
+        // Reset showcase button
+        const resetShowcaseBtn = document.getElementById('reset-showcase-btn');
+        resetShowcaseBtn.addEventListener('click', () => {
+            if (!currentProjectId) return;
+            
+            // Clean up object URLs
+            userMediaStore[currentProjectId].forEach(item => {
+                if (item.objectUrl) {
+                    URL.revokeObjectURL(item.url);
+                }
+            });
+            
+            userMediaStore[currentProjectId] = [];
+            renderProjectShowcase();
+            
+            // Show dropzone again
+            document.getElementById('dropzone').style.display = 'block';
+        });
+
+        function handleFiles(files) {
+            if (!currentProjectId || !files.length) return;
+
+            const allowedTypes = ['image/png', 'image/jpeg', 'video/mp4'];
+            const maxSize = 50 * 1024 * 1024; // 50MB
+
+            files.forEach(file => {
+                if (!allowedTypes.includes(file.type)) {
+                    alert(`File type ${file.type} not supported. Please use PNG, JPG, or MP4.`);
+                    return;
+                }
+
+                if (file.size > maxSize) {
+                    alert(`File ${file.name} is too large. Maximum size is 50MB.`);
+                    return;
+                }
+
+                const objectUrl = URL.createObjectURL(file);
+                const mediaItem = {
+                    kind: file.type.startsWith('image/') ? 'image' : 'video',
+                    name: file.name,
+                    url: objectUrl,
+                    objectUrl: true,
+                    size: file.size,
+                    type: file.type
+                };
+
+                userMediaStore[currentProjectId].push(mediaItem);
+            });
+
+            renderProjectShowcase();
+        }
+
+        function renderProjectShowcase() {
+            if (!currentProjectId) return;
+
+            const showcase = document.getElementById('project-showcase');
+            const gallery = document.getElementById('showcase-gallery');
+            const dropzone = document.getElementById('dropzone');
+            const projectMedia = userMediaStore[currentProjectId];
+
+            if (projectMedia.length === 0) {
+                showcase.classList.add('hidden');
+                dropzone.style.display = 'block';
+                return;
+            }
+
+            // Hide dropzone and show showcase
+            dropzone.style.display = 'none';
+            showcase.classList.remove('hidden');
+            gallery.innerHTML = '';
+
+            // Create beautiful showcase layout
+            const images = projectMedia.filter(item => item.kind === 'image');
+            const videos = projectMedia.filter(item => item.kind === 'video');
+
+            // Images section
+            if (images.length > 0) {
+                const imageSection = document.createElement('div');
+                imageSection.innerHTML = `
+                    <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                        📸 Project Images <span class="ml-2 text-sm text-gray-500">(${images.length})</span>
+                    </h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="images-grid"></div>
+                `;
+                gallery.appendChild(imageSection);
+
+                const imagesGrid = imageSection.querySelector('#images-grid');
+                images.forEach((item, index) => {
+                    const imageCard = document.createElement('div');
+                    imageCard.className = 'group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300';
+                    imageCard.innerHTML = `
+                        <img src="${item.url}" alt="${item.name}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <p class="text-white font-medium text-sm">${item.name}</p>
+                        </div>
+                    `;
+                    imagesGrid.appendChild(imageCard);
+                });
+            }
+
+            // Videos section
+            if (videos.length > 0) {
+                const videoSection = document.createElement('div');
+                videoSection.innerHTML = `
+                    <h5 class="text-lg font-semibold text-gray-800 mb-3 flex items-center ${images.length > 0 ? 'mt-8' : ''}">
+                        🎥 Project Videos <span class="ml-2 text-sm text-gray-500">(${videos.length})</span>
+                    </h5>
+                    <div class="space-y-4" id="videos-container"></div>
+                `;
+                gallery.appendChild(videoSection);
+
+                const videosContainer = videoSection.querySelector('#videos-container');
+                videos.forEach((item, index) => {
+                    const videoCard = document.createElement('div');
+                    videoCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden';
+                    
+                    // Create video element with better settings
+                    const video = document.createElement('video');
+                    video.className = 'w-full h-64 object-cover';
+                    video.controls = true;
+                    video.preload = 'auto';
+                    video.style.backgroundColor = '#f3f4f6';
+                    video.muted = true;
+                    video.playsInline = true;
+                    
+                    // Set src directly for better compatibility
+                    video.src = item.url;
+                    
+                    // Add comprehensive error handling
+                    video.addEventListener('loadstart', function() {
+                        console.log('Video loading started:', item.name);
+                    });
+                    
+                    video.addEventListener('canplay', function() {
+                        console.log('Video can play:', item.name);
+                    });
+                    
+                    video.addEventListener('error', function(e) {
+                        console.error('Video error:', e, 'for file:', item.name);
+                        this.style.display = 'none';
+                        const errorDiv = document.createElement('div');
+                        errorDiv.className = 'w-full h-64 bg-gray-200 flex items-center justify-center';
+                        errorDiv.innerHTML = `
+                            <div class="text-center text-gray-500">
+                                <div class="text-4xl mb-2">⚠️</div>
+                                <div class="text-sm font-medium">Cannot Play Video</div>
+                                <div class="text-xs mt-1">${item.name}</div>
+                                <div class="text-xs">Try a different MP4 format</div>
+                            </div>
+                        `;
+                        this.parentNode.insertBefore(errorDiv, this);
+                    });
+                    
+                    // Force load the video
+                    video.load();
+                    
+                    const infoDiv = document.createElement('div');
+                    infoDiv.className = 'p-4';
+                    infoDiv.innerHTML = `
+                        <p class="font-medium text-gray-900">${item.name}</p>
+                        <p class="text-sm text-gray-500">${(item.size / 1024 / 1024).toFixed(1)} MB • ${item.type}</p>
+                        <button onclick="tryPlayVideo(this)" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-xs">
+                            ▶️ Try Play
+                        </button>
+                    `;
+                    
+                    videoCard.appendChild(video);
+                    videoCard.appendChild(infoDiv);
+                    videosContainer.appendChild(videoCard);
+                });
+            }
+        }
+
+        function removeMedia(index) {
+            if (!currentProjectId) return;
+
+            const item = userMediaStore[currentProjectId][index];
+            if (item && item.objectUrl) {
+                URL.revokeObjectURL(item.url);
+            }
+
+            userMediaStore[currentProjectId].splice(index, 1);
+            renderProjectShowcase();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProject();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProject();
+            }
+        });
+
+        // Helper function to try playing video manually
+        function tryPlayVideo(button) {
+            const video = button.closest('.bg-white').querySelector('video');
+            if (video) {
+                video.play().then(() => {
+                    console.log('Video started playing');
+                    button.textContent = '✅ Playing';
+                    button.disabled = true;
+                }).catch(error => {
+                    console.error('Failed to play video:', error);
+                    button.textContent = '❌ Failed';
+                    button.style.backgroundColor = '#ef4444';
+                });
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97bf4de8672198c6',t:'MTc1NzM0MzUwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
